@@ -11,9 +11,19 @@
 		D6C900CE1B1BE7F400CCE060 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C900CD1B1BE7F400CCE060 /* AppDelegate.m */; };
 		D6C900D11B1BE7F400CCE060 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C900D01B1BE7F400CCE060 /* ViewController.m */; };
 		D6C900D41B1BE7F400CCE060 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6C900D21B1BE7F400CCE060 /* Main.storyboard */; };
-		D6C900D61B1BE7F400CCE060 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6C900D51B1BE7F400CCE060 /* Images.xcassets */; };
 		D6C900D91B1BE7F400CCE060 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6C900D71B1BE7F400CCE060 /* LaunchScreen.xib */; };
 		D6C900E51B1BE7F400CCE060 /* TPCPageScrollViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C900E41B1BE7F400CCE060 /* TPCPageScrollViewTests.m */; };
+		D6C900F21B1BE87400CCE060 /* TPCPageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C900F11B1BE87400CCE060 /* TPCPageScrollView.m */; };
+		D6C900FD1B1BF68C00CCE060 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = D6C900F31B1BF68C00CCE060 /* 1.png */; };
+		D6C900FE1B1BF68C00CCE060 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = D6C900F41B1BF68C00CCE060 /* 2.png */; };
+		D6C900FF1B1BF68C00CCE060 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = D6C900F51B1BF68C00CCE060 /* 3.png */; };
+		D6C901001B1BF68C00CCE060 /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = D6C900F61B1BF68C00CCE060 /* 4.png */; };
+		D6C901011B1BF68C00CCE060 /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = D6C900F71B1BF68C00CCE060 /* 5.png */; };
+		D6C901021B1BF68C00CCE060 /* 6.png in Resources */ = {isa = PBXBuildFile; fileRef = D6C900F81B1BF68C00CCE060 /* 6.png */; };
+		D6C901031B1BF68C00CCE060 /* 7.png in Resources */ = {isa = PBXBuildFile; fileRef = D6C900F91B1BF68C00CCE060 /* 7.png */; };
+		D6C901041B1BF68C00CCE060 /* 8.png in Resources */ = {isa = PBXBuildFile; fileRef = D6C900FA1B1BF68C00CCE060 /* 8.png */; };
+		D6C901051B1BF68C00CCE060 /* 9.png in Resources */ = {isa = PBXBuildFile; fileRef = D6C900FB1B1BF68C00CCE060 /* 9.png */; };
+		D6C901061B1BF68C00CCE060 /* 10.png in Resources */ = {isa = PBXBuildFile; fileRef = D6C900FC1B1BF68C00CCE060 /* 10.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,11 +45,22 @@
 		D6C900CF1B1BE7F400CCE060 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		D6C900D01B1BE7F400CCE060 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		D6C900D31B1BE7F400CCE060 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		D6C900D51B1BE7F400CCE060 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D6C900D81B1BE7F400CCE060 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		D6C900DE1B1BE7F400CCE060 /* TPCPageScrollViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TPCPageScrollViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6C900E31B1BE7F400CCE060 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D6C900E41B1BE7F400CCE060 /* TPCPageScrollViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TPCPageScrollViewTests.m; sourceTree = "<group>"; };
+		D6C900F01B1BE87400CCE060 /* TPCPageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPCPageScrollView.h; sourceTree = "<group>"; };
+		D6C900F11B1BE87400CCE060 /* TPCPageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPCPageScrollView.m; sourceTree = "<group>"; };
+		D6C900F31B1BF68C00CCE060 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		D6C900F41B1BF68C00CCE060 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		D6C900F51B1BF68C00CCE060 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
+		D6C900F61B1BF68C00CCE060 /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
+		D6C900F71B1BF68C00CCE060 /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
+		D6C900F81B1BF68C00CCE060 /* 6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6.png; sourceTree = "<group>"; };
+		D6C900F91B1BF68C00CCE060 /* 7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 7.png; sourceTree = "<group>"; };
+		D6C900FA1B1BF68C00CCE060 /* 8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 8.png; sourceTree = "<group>"; };
+		D6C900FB1B1BF68C00CCE060 /* 9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9.png; sourceTree = "<group>"; };
+		D6C900FC1B1BF68C00CCE060 /* 10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,12 +102,8 @@
 		D6C900C71B1BE7F400CCE060 /* TPCPageScrollView */ = {
 			isa = PBXGroup;
 			children = (
-				D6C900CC1B1BE7F400CCE060 /* AppDelegate.h */,
-				D6C900CD1B1BE7F400CCE060 /* AppDelegate.m */,
-				D6C900CF1B1BE7F400CCE060 /* ViewController.h */,
-				D6C900D01B1BE7F400CCE060 /* ViewController.m */,
+				D6C900EE1B1BE80000CCE060 /* Classes */,
 				D6C900D21B1BE7F400CCE060 /* Main.storyboard */,
-				D6C900D51B1BE7F400CCE060 /* Images.xcassets */,
 				D6C900D71B1BE7F400CCE060 /* LaunchScreen.xib */,
 				D6C900C81B1BE7F400CCE060 /* Supporting Files */,
 			);
@@ -96,6 +113,16 @@
 		D6C900C81B1BE7F400CCE060 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D6C900F31B1BF68C00CCE060 /* 1.png */,
+				D6C900F41B1BF68C00CCE060 /* 2.png */,
+				D6C900F51B1BF68C00CCE060 /* 3.png */,
+				D6C900F61B1BF68C00CCE060 /* 4.png */,
+				D6C900F71B1BF68C00CCE060 /* 5.png */,
+				D6C900F81B1BF68C00CCE060 /* 6.png */,
+				D6C900F91B1BF68C00CCE060 /* 7.png */,
+				D6C900FA1B1BF68C00CCE060 /* 8.png */,
+				D6C900FB1B1BF68C00CCE060 /* 9.png */,
+				D6C900FC1B1BF68C00CCE060 /* 10.png */,
 				D6C900C91B1BE7F400CCE060 /* Info.plist */,
 				D6C900CA1B1BE7F400CCE060 /* main.m */,
 			);
@@ -117,6 +144,27 @@
 				D6C900E31B1BE7F400CCE060 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D6C900EE1B1BE80000CCE060 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				D6C900EF1B1BE84700CCE060 /* TPCPageScrollView */,
+				D6C900CC1B1BE7F400CCE060 /* AppDelegate.h */,
+				D6C900CD1B1BE7F400CCE060 /* AppDelegate.m */,
+				D6C900CF1B1BE7F400CCE060 /* ViewController.h */,
+				D6C900D01B1BE7F400CCE060 /* ViewController.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		D6C900EF1B1BE84700CCE060 /* TPCPageScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				D6C900F01B1BE87400CCE060 /* TPCPageScrollView.h */,
+				D6C900F11B1BE87400CCE060 /* TPCPageScrollView.m */,
+			);
+			name = TPCPageScrollView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,9 +247,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6C901051B1BF68C00CCE060 /* 9.png in Resources */,
+				D6C901041B1BF68C00CCE060 /* 8.png in Resources */,
+				D6C901061B1BF68C00CCE060 /* 10.png in Resources */,
+				D6C901031B1BF68C00CCE060 /* 7.png in Resources */,
+				D6C901001B1BF68C00CCE060 /* 4.png in Resources */,
+				D6C900FF1B1BF68C00CCE060 /* 3.png in Resources */,
+				D6C900FD1B1BF68C00CCE060 /* 1.png in Resources */,
 				D6C900D41B1BE7F400CCE060 /* Main.storyboard in Resources */,
+				D6C901011B1BF68C00CCE060 /* 5.png in Resources */,
+				D6C900FE1B1BF68C00CCE060 /* 2.png in Resources */,
+				D6C901021B1BF68C00CCE060 /* 6.png in Resources */,
 				D6C900D91B1BE7F400CCE060 /* LaunchScreen.xib in Resources */,
-				D6C900D61B1BE7F400CCE060 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,6 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6C900F21B1BE87400CCE060 /* TPCPageScrollView.m in Sources */,
 				D6C900D11B1BE7F400CCE060 /* ViewController.m in Sources */,
 				D6C900CE1B1BE7F400CCE060 /* AppDelegate.m in Sources */,
 				D6C900CB1B1BE7F400CCE060 /* main.m in Sources */,
