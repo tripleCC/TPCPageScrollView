@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "TPCPageScrollView.h"
 
-#define kImageNumber 10
+#define kImageNumber 4
 
 @interface ViewController ()
 
@@ -34,20 +34,52 @@
     
     self.pageView = pageScrollView;
     
-    UILabel *pagingIntervalLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height - 40, self.view.bounds.size.width, 40)];
-    pagingIntervalLabel.text = [NSString stringWithFormat:@"轮切间隔%.1f", pageScrollView.pagingInterval];
+    [self addTestWidget];
+}
+
+- (void)addTestWidget
+{
+    CGFloat height = 40;
+    CGFloat btnWidth = 60;
+    
+    UILabel *pagingIntervalLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height - height, self.view.bounds.size.width, height)];
+    pagingIntervalLabel.text = [NSString stringWithFormat:@"轮切间隔%.1f", self.pageView.pagingInterval];
     pagingIntervalLabel.textAlignment = NSTextAlignmentCenter;
     pagingIntervalLabel.textColor = [UIColor orangeColor];
     pagingIntervalLabel.font = [UIFont systemFontOfSize:25.0];
     [self.view addSubview:pagingIntervalLabel];
     
     self.pagingIntervalLabel = pagingIntervalLabel;
+    
+    UIButton *btnLeft = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btnLeft setTitle:@"上一处" forState: UIControlStateNormal];
+    [btnLeft setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+    btnLeft.frame = CGRectMake(0, pagingIntervalLabel.frame.origin.y, btnWidth, height);
+    [btnLeft addTarget:self action:@selector(btnLeftOnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btnLeft];
+    
+    UIButton *btnRight = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btnRight setTitle:@"下一处" forState: UIControlStateNormal];
+    [btnRight setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+    btnRight.frame = CGRectMake(self.view.bounds.size.width - btnWidth, pagingIntervalLabel.frame.origin.y, btnWidth, height);
+    [btnRight addTarget:self action:@selector(btnRightOnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btnRight];
+}
+
+- (void)btnLeftOnClick:(UIButton *)btn
+{
+    self.pageView.pageControlPostion = TPCPageControlPositionBottomCenter;
+}
+
+- (void)btnRightOnClick:(UIButton *)btn
+{
+    self.pageView.pageControlPostion = TPCPageControlPositionBottomRight;
 }
 
 - (NSArray *)images
 {
     if (nil == _images) {
-        NSMutableArray *images = [NSMutableArray arrayWithCapacity:10];
+        NSMutableArray *images = [NSMutableArray arrayWithCapacity:kImageNumber];
         
         for (int i = 0; i < kImageNumber; i++) {
             NSString *imageName = [NSString stringWithFormat:@"%d.png", i + 1];
@@ -59,17 +91,21 @@
     return _images;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (UIColor *)randomColor {
+    CGFloat hue = ( arc4random() % 256 / 256.0 );
+    CGFloat saturation = ( arc4random() % 128 / 256.0 ) + 0.5;
+    CGFloat brightness = ( arc4random() % 128 / 256.0 ) + 0.5;
+    return [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:1];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     self.pageView.pagingInterval = arc4random_uniform(8);
-    self.pageView.currentPageColor = [UIColor redColor];
-    self.pageView.otherPageColor = [UIColor blackColor];
-    self.pageView.frame = CGRectMake(arc4random_uniform(100), arc4random_uniform(100), 200, 300);
+    
+    self.pageView.currentPageColor = [self randomColor];
+    self.pageView.otherPageColor = [self randomColor];
+    
+    self.pageView.frame = CGRectMake(arc4random_uniform(100), arc4random_uniform(300), arc4random_uniform(200) + 100, arc4random_uniform(200) + 200);
     
     self.pagingIntervalLabel.text = [NSString stringWithFormat:@"轮切间隔%.1f", self.pageView.pagingInterval];
 }

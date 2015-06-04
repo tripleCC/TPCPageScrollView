@@ -9,6 +9,8 @@
 #import "TPCPageScrollView.h"
 
 #define kPageControlHeight 37
+#define kPageControlEachWidth 16
+
 #define kDefaultDuration 2.0
 
 @interface TPCPageScrollView() <UIScrollViewDelegate>
@@ -85,6 +87,9 @@
     
     // 设置默认切图间隔
     self.pagingInterval = kDefaultDuration;
+    
+    // 设置页索引默认位置为右下角
+    self.pageControlPostion = TPCPageControlPositionBottomRight;
 }
 
 /**
@@ -141,78 +146,33 @@
     // 设置UIScrollView滚动内容大小
     self.scrollView.contentSize = CGSizeMake(imageViewW * 3, 0);
     
-    // 设置UIPageControl默认位置
-    CGFloat pageControlCenterX = self.bounds.size.width / 2.0;
-    CGFloat pageControlCenterY = self.bounds.size.height - kPageControlHeight / 2.0;
-    self.pageControl.center = CGPointMake(pageControlCenterX, pageControlCenterY);
+    // 设置UIPageControl位置
+    [self setPageControlPostion];
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         // 启动程序后第一次执行子控件调整时，改变一次偏移量值，使其显示中间的UIImageView
         [self.scrollView setContentOffset:CGPointMake(imageViewW, 0)];
     });
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    // 设置UIPageControl的页码
-    if (self.scrollView.contentOffset.x > self.scrollView.bounds.size.width * 1.5) {
-        self.pageControl.currentPage = self.rightImageView.tag;
-    } else if (self.scrollView.contentOffset.x < self.scrollView.bounds.size.width * 0.5) {
-        self.pageControl.currentPage = self.leftImageView.tag;
-    } else {
-        self.pageControl.currentPage = self.currentImageView.tag;
-    }
-}
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-{
-    // 手动拖拽切换更改内容
+    
+    // 父控件frame变化后立即更新内容
     [self updateContent];
 }
 
-- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
+/**
+ * 设置页索引位置
+ */
+- (void)setPageControlPostion
 {
-    // 定时器切换更改内容
-    [self updateContent];
-}
-
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
-{
-    if (self.isAutoPaging) {
-        [self stopTimer];
+    CGFloat pageControlCenterX;
+    CGFloat pageControlCenterY;
+    if (TPCPageControlPositionBottomCenter == self.pageControlPostion) {
+        pageControlCenterX = self.bounds.size.width / 2.0;
+    } else if (TPCPageControlPositionBottomRight == self.pageControlPostion) {
+        pageControlCenterX = self.bounds.size.width - self.images.count * kPageControlEachWidth / 2.0;
     }
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
-{
-    if (self.isAutoPaging) {
-        [self startTimer];
-    }
-}
-
-- (void)setCurrentPageColor:(UIColor *)currentPageColor
-{
-    _currentPageColor = currentPageColor;
-    
-    self.pageControl.currentPageIndicatorTintColor = currentPageColor;
-}
-
-- (void)setOtherPageColor:(UIColor *)otherPageColor
-{
-    _otherPageColor = otherPageColor;
-    
-    self.pageControl.pageIndicatorTintColor = otherPageColor;
-}
-
-- (void)setPagingInterval:(NSTimeInterval)pagingInterval
-{
-    _pagingInterval = pagingInterval > 0 ? pagingInterval : kDefaultDuration;
-    
-    // 在开启自动切图的情况下，修改时间间隔会实时生效
-    if (self.isAutoPaging) {
-        [self startAutoPaging];
-    }
+    pageControlCenterY = self.bounds.size.height - kPageControlHeight / 2.0;
+    self.pageControl.center = CGPointMake(pageControlCenterX, pageControlCenterY);
 }
 
 /**
@@ -313,4 +273,74 @@
     // 移动至中间的UIImageView
     [self.scrollView setContentOffset:CGPointMake(scrollViewW, 0) animated:NO];
 }
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    // 设置UIPageControl的页码
+    if (self.scrollView.contentOffset.x > self.scrollView.bounds.size.width * 1.5) {
+        self.pageControl.currentPage = self.rightImageView.tag;
+    } else if (self.scrollView.contentOffset.x < self.scrollView.bounds.size.width * 0.5) {
+        self.pageControl.currentPage = self.leftImageView.tag;
+    } else {
+        self.pageControl.currentPage = self.currentImageView.tag;
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    // 手动拖拽切换更改内容
+    [self updateContent];
+}
+
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
+{
+    // 定时器切换更改内容
+    [self updateContent];
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    if (self.isAutoPaging) {
+        [self stopTimer];
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if (self.isAutoPaging) {
+        [self startTimer];
+    }
+}
+
+- (void)setCurrentPageColor:(UIColor *)currentPageColor
+{
+    _currentPageColor = currentPageColor;
+    
+    self.pageControl.currentPageIndicatorTintColor = currentPageColor;
+}
+
+- (void)setOtherPageColor:(UIColor *)otherPageColor
+{
+    _otherPageColor = otherPageColor;
+    
+    self.pageControl.pageIndicatorTintColor = otherPageColor;
+}
+
+- (void)setPageControlPostion:(TPCPageControlPosition)pageControlPostion
+{
+    _pageControlPostion = pageControlPostion;
+    
+    [self layoutSubviews];
+}
+
+- (void)setPagingInterval:(NSTimeInterval)pagingInterval
+{
+    _pagingInterval = pagingInterval > 0 ? pagingInterval : kDefaultDuration;
+    
+    // 在开启自动切图的情况下，修改时间间隔会实时生效
+    if (self.isAutoPaging) {
+        [self startAutoPaging];
+    }
+}
+
 @end

@@ -42,7 +42,7 @@
 		D6C900E31B1BE7F400CCE060 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D6C900E41B1BE7F400CCE060 /* TPCPageScrollViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TPCPageScrollViewTests.m; sourceTree = "<group>"; };
 		D6C900F01B1BE87400CCE060 /* TPCPageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPCPageScrollView.h; sourceTree = "<group>"; };
-		D6C900F11B1BE87400CCE060 /* TPCPageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPCPageScrollView.m; sourceTree = "<group>"; };
+		D6C900F11B1BE87400CCE060 /* TPCPageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPCPageScrollView.m; sourceTree = "<group>"; tabWidth = 5; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,8 +85,6 @@
 			isa = PBXGroup;
 			children = (
 				D6C900EE1B1BE80000CCE060 /* Classes */,
-				D6C900D21B1BE7F400CCE060 /* Main.storyboard */,
-				D6C900D71B1BE7F400CCE060 /* LaunchScreen.xib */,
 				D6C900C81B1BE7F400CCE060 /* Supporting Files */,
 			);
 			path = TPCPageScrollView;
@@ -95,6 +93,8 @@
 		D6C900C81B1BE7F400CCE060 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D6C900D21B1BE7F400CCE060 /* Main.storyboard */,
+				D6C900D71B1BE7F400CCE060 /* LaunchScreen.xib */,
 				D66705F51B1FC9F500447B24 /* Images.xcassets */,
 				D6C900C91B1BE7F400CCE060 /* Info.plist */,
 				D6C900CA1B1BE7F400CCE060 /* main.m */,

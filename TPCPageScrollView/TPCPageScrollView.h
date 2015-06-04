@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ * 页索引位置
+ */
+typedef NS_ENUM(NSInteger, TPCPageControlPosition)
+{
+    TPCPageControlPositionBottomCenter = 0,
+    TPCPageControlPositionBottomRight
+};
+
 @interface TPCPageScrollView : UIView
 /**
  * 图片
@@ -23,6 +32,11 @@
  * 非当前页索引颜色
  */
 @property (strong, nonatomic) UIColor *otherPageColor;
+
+/**
+ * 页索引位置
+ */
+@property (assign, nonatomic) TPCPageControlPosition pageControlPostion;
 
 /**
  * 切换图片间隔
