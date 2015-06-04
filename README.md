@@ -38,3 +38,5 @@ UIScrollView+UIPageControl
 ![](./README/Snip20150531_29.png)
 
 如上，最终结果显示的都是最中间的UIImageView，看起来像是无限个UIImageView一样
+
+![](./README/2015-06-04 08_08_45.gif)
