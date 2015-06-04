@@ -16,6 +16,9 @@
 @property (strong, nonatomic) NSArray *images;
 //@property (weak, nonatomic) IBOutlet TPCPageScrollView *pageScrollView;
 @property (weak, nonatomic) TPCPageScrollView *pageView;
+
+@property (weak, nonatomic) UILabel *pagingIntervalLabel;
+
 @end
 
 @implementation ViewController
@@ -23,19 +26,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    TPCPageScrollView *pageScrollView = [[TPCPageScrollView alloc] initWithFrame:CGRectMake(20, 0, 320, 200)];
+    TPCPageScrollView *pageScrollView = [[TPCPageScrollView alloc] initWithFrame:CGRectMake(20, 0, 200, 300)];
     pageScrollView.images = self.images;
     pageScrollView.pagingInterval = 1.0;
     [pageScrollView startAutoPaging];
-    
     [self.view addSubview:pageScrollView];
     
-    _pageView = pageScrollView;
+    self.pageView = pageScrollView;
     
-//    self.pageScrollView.images = self.images;
-//    self.pageScrollView.pagingInterval = 1.0;
-//    [self.pageScrollView startAutoPaging];
+    UILabel *pagingIntervalLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height - 40, self.view.bounds.size.width, 40)];
+    pagingIntervalLabel.text = [NSString stringWithFormat:@"轮切间隔%.1f", pageScrollView.pagingInterval];
+    pagingIntervalLabel.textAlignment = NSTextAlignmentCenter;
+    pagingIntervalLabel.textColor = [UIColor orangeColor];
+    pagingIntervalLabel.font = [UIFont systemFontOfSize:25.0];
+    [self.view addSubview:pagingIntervalLabel];
     
+    self.pagingIntervalLabel = pagingIntervalLabel;
 }
 
 - (NSArray *)images
@@ -60,10 +66,17 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    self.pageView.pagingInterval = arc4random_uniform(4);
+    self.pageView.pagingInterval = arc4random_uniform(8);
     self.pageView.currentPageColor = [UIColor redColor];
     self.pageView.otherPageColor = [UIColor blackColor];
-    self.pageView.frame = CGRectMake(10, arc4random_uniform(100), 300, 400);
+    self.pageView.frame = CGRectMake(arc4random_uniform(100), arc4random_uniform(100), 200, 300);
+    
+    self.pagingIntervalLabel.text = [NSString stringWithFormat:@"轮切间隔%.1f", self.pageView.pagingInterval];
 }
 
+
+- (BOOL)prefersStatusBarHidden
+{
+   return YES;
+}
 @end
