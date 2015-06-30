@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		D66705F61B1FC9F500447B24 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D66705F51B1FC9F500447B24 /* Images.xcassets */; };
+		D69DCB801B23F2490015222F /* TPCPageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D69DCB7F1B23F2490015222F /* TPCPageScrollView.m */; };
 		D6C900CB1B1BE7F400CCE060 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C900CA1B1BE7F400CCE060 /* main.m */; };
 		D6C900CE1B1BE7F400CCE060 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C900CD1B1BE7F400CCE060 /* AppDelegate.m */; };
 		D6C900D11B1BE7F400CCE060 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C900D01B1BE7F400CCE060 /* ViewController.m */; };
 		D6C900D41B1BE7F400CCE060 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6C900D21B1BE7F400CCE060 /* Main.storyboard */; };
 		D6C900D91B1BE7F400CCE060 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6C900D71B1BE7F400CCE060 /* LaunchScreen.xib */; };
 		D6C900E51B1BE7F400CCE060 /* TPCPageScrollViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C900E41B1BE7F400CCE060 /* TPCPageScrollViewTests.m */; };
-		D6C900F21B1BE87400CCE060 /* TPCPageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C900F11B1BE87400CCE060 /* TPCPageScrollView.m */; };
+		D6D21B041B428E1B004626A8 /* TPCScrollViewByTwoImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D21B031B428E1B004626A8 /* TPCScrollViewByTwoImageView.m */; };
+		D6D21B3D1B4296BC004626A8 /* TPCScrollViewByCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D21B3C1B4296BC004626A8 /* TPCScrollViewByCollectionView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +31,8 @@
 
 /* Begin PBXFileReference section */
 		D66705F51B1FC9F500447B24 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		D69DCB7E1B23F2490015222F /* TPCPageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPCPageScrollView.h; sourceTree = "<group>"; };
+		D69DCB7F1B23F2490015222F /* TPCPageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPCPageScrollView.m; sourceTree = "<group>"; };
 		D6C900C51B1BE7F400CCE060 /* TPCPageScrollView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TPCPageScrollView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6C900C91B1BE7F400CCE060 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D6C900CA1B1BE7F400CCE060 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -41,8 +45,10 @@
 		D6C900DE1B1BE7F400CCE060 /* TPCPageScrollViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TPCPageScrollViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6C900E31B1BE7F400CCE060 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D6C900E41B1BE7F400CCE060 /* TPCPageScrollViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TPCPageScrollViewTests.m; sourceTree = "<group>"; };
-		D6C900F01B1BE87400CCE060 /* TPCPageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPCPageScrollView.h; sourceTree = "<group>"; };
-		D6C900F11B1BE87400CCE060 /* TPCPageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPCPageScrollView.m; sourceTree = "<group>"; tabWidth = 5; };
+		D6D21B021B428E1B004626A8 /* TPCScrollViewByTwoImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPCScrollViewByTwoImageView.h; sourceTree = "<group>"; };
+		D6D21B031B428E1B004626A8 /* TPCScrollViewByTwoImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPCScrollViewByTwoImageView.m; sourceTree = "<group>"; };
+		D6D21B3B1B4296BC004626A8 /* TPCScrollViewByCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPCScrollViewByCollectionView.h; sourceTree = "<group>"; };
+		D6D21B3C1B4296BC004626A8 /* TPCScrollViewByCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPCScrollViewByCollectionView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +69,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D69DCB7D1B23F2490015222F /* TPCPageScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				D69DCB7E1B23F2490015222F /* TPCPageScrollView.h */,
+				D69DCB7F1B23F2490015222F /* TPCPageScrollView.m */,
+			);
+			path = TPCPageScrollView;
+			sourceTree = "<group>";
+		};
 		D6C900BC1B1BE7F400CCE060 = {
 			isa = PBXGroup;
 			children = (
@@ -122,7 +137,9 @@
 		D6C900EE1B1BE80000CCE060 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				D6C900EF1B1BE84700CCE060 /* TPCPageScrollView */,
+				D6D21B051B428E8B004626A8 /* TPCPageScrollViewByCollectionView */,
+				D6D21B011B428E09004626A8 /* TPCPageScrollViewByTwoImageView */,
+				D69DCB7D1B23F2490015222F /* TPCPageScrollView */,
 				D6C900CC1B1BE7F400CCE060 /* AppDelegate.h */,
 				D6C900CD1B1BE7F400CCE060 /* AppDelegate.m */,
 				D6C900CF1B1BE7F400CCE060 /* ViewController.h */,
@@ -131,13 +148,22 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
-		D6C900EF1B1BE84700CCE060 /* TPCPageScrollView */ = {
+		D6D21B011B428E09004626A8 /* TPCPageScrollViewByTwoImageView */ = {
 			isa = PBXGroup;
 			children = (
-				D6C900F01B1BE87400CCE060 /* TPCPageScrollView.h */,
-				D6C900F11B1BE87400CCE060 /* TPCPageScrollView.m */,
+				D6D21B021B428E1B004626A8 /* TPCScrollViewByTwoImageView.h */,
+				D6D21B031B428E1B004626A8 /* TPCScrollViewByTwoImageView.m */,
 			);
-			name = TPCPageScrollView;
+			path = TPCPageScrollViewByTwoImageView;
+			sourceTree = "<group>";
+		};
+		D6D21B051B428E8B004626A8 /* TPCPageScrollViewByCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				D6D21B3B1B4296BC004626A8 /* TPCScrollViewByCollectionView.h */,
+				D6D21B3C1B4296BC004626A8 /* TPCScrollViewByCollectionView.m */,
+			);
+			path = TPCPageScrollViewByCollectionView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,7 +266,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6C900F21B1BE87400CCE060 /* TPCPageScrollView.m in Sources */,
+				D69DCB801B23F2490015222F /* TPCPageScrollView.m in Sources */,
+				D6D21B3D1B4296BC004626A8 /* TPCScrollViewByCollectionView.m in Sources */,
+				D6D21B041B428E1B004626A8 /* TPCScrollViewByTwoImageView.m in Sources */,
 				D6C900D11B1BE7F400CCE060 /* ViewController.m in Sources */,
 				D6C900CE1B1BE7F400CCE060 /* AppDelegate.m in Sources */,
 				D6C900CB1B1BE7F400CCE060 /* main.m in Sources */,
