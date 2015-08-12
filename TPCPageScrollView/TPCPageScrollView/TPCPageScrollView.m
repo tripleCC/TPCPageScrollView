@@ -125,6 +125,8 @@
     
     //设置页数
     self.pageControl.numberOfPages = images.count;
+    
+    [self setNeedsLayout];
 }
 
 - (void)layoutSubviews
