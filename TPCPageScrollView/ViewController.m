@@ -27,10 +27,14 @@
     [super viewDidLoad];
     
     TPCPageScrollView *pageScrollView = [[TPCPageScrollView alloc] initWithFrame:CGRectMake(20, 0, 200, 300)];
-    pageScrollView.images = self.images;
+    
     pageScrollView.pagingInterval = 1.0;
     [pageScrollView startAutoPaging];
     [self.view addSubview:pageScrollView];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        pageScrollView.images = self.images;
+    });
     
     self.pageView = pageScrollView;
     

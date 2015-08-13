@@ -126,7 +126,12 @@
     //设置页数
     self.pageControl.numberOfPages = images.count;
     
-    [self setNeedsLayout];
+    // 设置显示中间的图片
+    CGFloat imageViewW = self.scrollView.bounds.size.width;
+    [self.scrollView setContentOffset:CGPointMake(imageViewW, 0)];
+    
+    // 设置UIPageControl位置
+    [self setPageControlPostion];
 }
 
 - (void)layoutSubviews
@@ -150,12 +155,6 @@
     
     // 设置UIPageControl位置
     [self setPageControlPostion];
-    
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        // 启动程序后第一次执行子控件调整时，改变一次偏移量值，使其显示中间的UIImageView
-        [self.scrollView setContentOffset:CGPointMake(imageViewW, 0)];
-    });
     
     // 父控件frame变化后立即更新内容
     [self updateContent];
@@ -252,6 +251,8 @@
 - (void)updateContent
 {
     CGFloat scrollViewW = self.scrollView.bounds.size.width;
+    
+    if (!self.images.count) return;
     
     if (self.scrollView.contentOffset.x > scrollViewW) {
         // 向前滚动，设置tag
