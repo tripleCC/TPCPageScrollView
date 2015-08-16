@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class TPCPageScrollView;
+@protocol TPCPageScrollViewDelegate <NSObject>
+@optional
+- (void)pageScrollView:(TPCPageScrollView *)pageScrollView didClickImageAtIndex:(NSInteger)index;
+@end
+
 /**
  * 页索引位置
  */
@@ -18,6 +24,13 @@ typedef NS_ENUM(NSInteger, TPCPageControlPosition)
 };
 
 @interface TPCPageScrollView : UIView
+@property (weak, nonatomic) id<TPCPageScrollViewDelegate> delegate;
+
+/** 
+ * 图片url（网络的也可以）
+ */
+@property (strong, nonatomic) NSArray *imageURLStrings;
+
 /**
  * 图片
  */

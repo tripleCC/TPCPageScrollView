@@ -13,7 +13,7 @@
 
 #define kDefaultDuration 2.0
 
-@interface TPCPageScrollView() <UIScrollViewDelegate>
+@interface  TPCPageScrollView() <UIScrollViewDelegate>
 
 @property (weak, nonatomic) UIScrollView *scrollView;
 @property (weak, nonatomic) UIPageControl *pageControl;
@@ -27,8 +27,9 @@
 @property (assign, nonatomic, getter=isAutoPaging) BOOL autoPaging;
 @end
 
-@implementation TPCPageScrollView
+@implementation  TPCPageScrollView
 
+#pragma mark 初始化
 /**
  * 代码创建
  */
@@ -65,7 +66,8 @@
     scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.showsVerticalScrollIndicator = NO;
     scrollView.pagingEnabled = YES;
-    scrollView.scrollEnabled = YES;
+    // 初始化时先设置为NO，有>1张图片时才设置为YES
+    scrollView.scrollEnabled = NO;
     scrollView.delegate = self;
     
     // 取消弹簧效果，不然拖动会出现问题
@@ -108,6 +110,17 @@
     self.leftImageView = leftImageView;
     self.currentImageView = currentImageView;
     self.rightImageView = rightImageView;
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
+    self.currentImageView.userInteractionEnabled = YES;
+    [self.currentImageView addGestureRecognizer:tap];
+}
+
+- (void)tap:(UITapGestureRecognizer *)tapGesture
+{
+    if ([self.delegate respondsToSelector:@selector(pageScrollView:didClickImageAtIndex:)]) {
+        [self.delegate pageScrollView:self didClickImageAtIndex:self.currentImageView.tag];
+    }
 }
 
 - (void)setImages:(NSArray *)images
@@ -132,8 +145,51 @@
     
     // 设置UIPageControl位置
     [self setPageControlPostion];
+    
+    // 图片过少不能拖动
+    self.scrollView.scrollEnabled = !(self.images.count <= 1);
+    
+    // 重启定时器
+    if (self.isAutoPaging) {
+        [self startAutoPaging];
+    }
 }
 
+- (void)setImageURLStrings:(NSArray *)imageURLStrings
+{
+    NSMutableArray *imagesTemp = [NSMutableArray arrayWithCapacity:imageURLStrings.count];
+
+    //设置页数
+    self.pageControl.numberOfPages = imageURLStrings.count;
+    
+    // 设置显示中间的图片
+    CGFloat imageViewW = self.scrollView.bounds.size.width;
+    [self.scrollView setContentOffset:CGPointMake(imageViewW, 0)];
+    
+    // 设置UIPageControl位置
+    [self setPageControlPostion];
+    
+    // 先下载显示第一张图片
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[imageURLStrings firstObject]]]];
+        [imagesTemp addObject:image];
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            self.currentImageView.image = image;
+        });
+        
+        // 再下载剩余图片
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            for (NSInteger i = 1; i < imageURLStrings.count; i++) {
+                UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageURLStrings[i]]]];
+                [imagesTemp addObject:image];
+            }
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                self.images = imagesTemp;
+            });
+        });
+    });
+}
+#pragma mark 布局相关
 - (void)layoutSubviews
 {
     [super layoutSubviews];
@@ -156,7 +212,6 @@
     // 设置UIPageControl位置
     [self setPageControlPostion];
     
-    // 父控件frame变化后立即更新内容
     [self updateContent];
 }
 
@@ -172,10 +227,11 @@
     } else if (TPCPageControlPositionBottomRight == self.pageControlPostion) {
         pageControlCenterX = self.bounds.size.width - self.images.count * kPageControlEachWidth / 2.0;
     }
-    pageControlCenterY = self.bounds.size.height - kPageControlHeight / 2.0;
+    pageControlCenterY = self.bounds.size.height - kPageControlHeight / 4.0;
     self.pageControl.center = CGPointMake(pageControlCenterX, pageControlCenterY);
 }
 
+#pragma mark 轮切
 /**
  * 以duration时间间隔，开启定时切换图片
  */
@@ -215,6 +271,8 @@
  */
 - (void)startTimer
 {
+    if (self.images.count <= 1) return;
+    
     if (!self.timer) {
         // 注册定时器
         self.timer = [NSTimer timerWithTimeInterval:self.pagingInterval target:self selector:@selector(nextPage) userInfo:nil repeats:YES];
@@ -252,7 +310,7 @@
 {
     CGFloat scrollViewW = self.scrollView.bounds.size.width;
     
-    if (!self.images.count) return;
+    if (self.images.count <= 1) return;
     
     if (self.scrollView.contentOffset.x > scrollViewW) {
         // 向前滚动，设置tag
@@ -279,8 +337,11 @@
     [self.scrollView setContentOffset:CGPointMake(scrollViewW, 0) animated:NO];
 }
 
+#pragma mark UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    if (self.images.count <= 1) return;
+    
     // 设置UIPageControl的页码
     if (self.scrollView.contentOffset.x > self.scrollView.bounds.size.width * 1.5) {
         self.pageControl.currentPage = self.rightImageView.tag;
@@ -316,6 +377,8 @@
         [self startTimer];
     }
 }
+
+#pragma mark 实时改变
 
 - (void)setCurrentPageColor:(UIColor *)currentPageColor
 {
