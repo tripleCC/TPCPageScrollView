@@ -128,13 +128,16 @@
     _images = images;
     
     // 设置默认图片
-    self.leftImageView.image = images[images.count - 1];
     self.currentImageView.image = images[0];
-    self.rightImageView.image = images[1];
-    
-    self.leftImageView.tag = images.count - 1;
     self.currentImageView.tag = 0;
-    self.rightImageView.tag = 1;
+    
+    // 小于等于1张就不设置左右图片
+    if (images.count > 1) {
+        self.leftImageView.image = images[images.count - 1];
+        self.rightImageView.image = images[1];
+        self.leftImageView.tag = images.count - 1;
+        self.rightImageView.tag = 1;
+    }
     
     //设置页数
     self.pageControl.numberOfPages = images.count;
