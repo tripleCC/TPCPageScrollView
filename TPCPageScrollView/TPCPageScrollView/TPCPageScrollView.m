@@ -223,8 +223,8 @@
  */
 - (void)setPageControlPostion
 {
-    CGFloat pageControlCenterX;
-    CGFloat pageControlCenterY;
+    CGFloat pageControlCenterX = 0;
+    CGFloat pageControlCenterY = 0;
     if (TPCPageControlPositionBottomCenter == self.pageControlPostion) {
         pageControlCenterX = self.bounds.size.width / 2.0;
     } else if (TPCPageControlPositionBottomRight == self.pageControlPostion) {
