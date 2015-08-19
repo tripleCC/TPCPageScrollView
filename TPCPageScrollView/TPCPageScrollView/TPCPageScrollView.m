@@ -127,6 +127,8 @@
 {
     _images = images;
     
+    if (images.count < 1) return;
+    
     // 设置默认图片
     self.currentImageView.image = images[0];
     self.currentImageView.tag = 0;
