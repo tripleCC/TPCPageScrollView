@@ -186,7 +186,7 @@
                 UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageURLStrings[i]]]];
                 [imagesTemp addObject:image];
             }
-            dispatch_sync(dispatch_get_main_queue(), ^{
+            dispatch_async(dispatch_get_main_queue(), ^{
                 self.images = imagesTemp;
             });
         });
