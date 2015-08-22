@@ -162,14 +162,12 @@
 
 - (void)setImageURLStrings:(NSArray *)imageURLStrings
 {
+    _imageURLStrings = imageURLStrings;
+    
     NSMutableArray *imagesTemp = [NSMutableArray arrayWithCapacity:imageURLStrings.count];
 
     //设置页数
     self.pageControl.numberOfPages = imageURLStrings.count;
-    
-    // 设置显示中间的图片
-    CGFloat imageViewW = self.scrollView.bounds.size.width;
-    [self.scrollView setContentOffset:CGPointMake(imageViewW, 0)];
     
     // 设置UIPageControl位置
     [self setPageControlPostion];
@@ -180,6 +178,10 @@
         [imagesTemp addObject:image];
         dispatch_sync(dispatch_get_main_queue(), ^{
             self.currentImageView.image = image;
+            
+            // 设置显示中间的图片
+            CGFloat imageViewW = self.scrollView.bounds.size.width;
+            [self.scrollView setContentOffset:CGPointMake(imageViewW, 0)];
         });
         
         // 再下载剩余图片
@@ -230,7 +232,7 @@
     if (TPCPageControlPositionBottomCenter == self.pageControlPostion) {
         pageControlCenterX = self.bounds.size.width / 2.0;
     } else if (TPCPageControlPositionBottomRight == self.pageControlPostion) {
-        pageControlCenterX = self.bounds.size.width - self.images.count * kPageControlEachWidth / 2.0;
+        pageControlCenterX = self.bounds.size.width - MAX(self.images.count, self.imageURLStrings.count) * kPageControlEachWidth / 2.0;
     }
     pageControlCenterY = self.bounds.size.height - kPageControlHeight / 4.0;
     self.pageControl.center = CGPointMake(pageControlCenterX, pageControlCenterY);
