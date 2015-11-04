@@ -204,8 +204,6 @@
     
     // 设置UIPageControl位置
     [self setPageControlPostion];
-    
-    [self updateContent];
 }
 
 /**
