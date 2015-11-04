@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6DB17B8F5F9E6CA626CCDA63 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B182A6875E41482F16F38C /* libPods.a */; };
 		D66705F61B1FC9F500447B24 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D66705F51B1FC9F500447B24 /* Images.xcassets */; };
 		D69DCB801B23F2490015222F /* TPCPageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D69DCB7F1B23F2490015222F /* TPCPageScrollView.m */; };
 		D6C900CB1B1BE7F400CCE060 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C900CA1B1BE7F400CCE060 /* main.m */; };
@@ -30,6 +31,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		113FB83DF92B3DCC7E883B98 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		1A1A56066A33D77E356E90D6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		D2B182A6875E41482F16F38C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D66705F51B1FC9F500447B24 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D69DCB7E1B23F2490015222F /* TPCPageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPCPageScrollView.h; sourceTree = "<group>"; };
 		D69DCB7F1B23F2490015222F /* TPCPageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPCPageScrollView.m; sourceTree = "<group>"; };
@@ -56,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DB17B8F5F9E6CA626CCDA63 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,6 +74,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9516098CC04F27BB320FC341 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1A1A56066A33D77E356E90D6 /* Pods.debug.xcconfig */,
+				113FB83DF92B3DCC7E883B98 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		D69DCB7D1B23F2490015222F /* TPCPageScrollView */ = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +98,8 @@
 				D6C900C71B1BE7F400CCE060 /* TPCPageScrollView */,
 				D6C900E11B1BE7F400CCE060 /* TPCPageScrollViewTests */,
 				D6C900C61B1BE7F400CCE060 /* Products */,
+				9516098CC04F27BB320FC341 /* Pods */,
+				E32AB8517BE79D4E44BA99B5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -166,6 +182,14 @@
 			path = TPCPageScrollViewByCollectionView;
 			sourceTree = "<group>";
 		};
+		E32AB8517BE79D4E44BA99B5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D2B182A6875E41482F16F38C /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -173,9 +197,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D6C900E81B1BE7F400CCE060 /* Build configuration list for PBXNativeTarget "TPCPageScrollView" */;
 			buildPhases = (
+				F9E449E4EE2FB41676AA95D7 /* Check Pods Manifest.lock */,
 				D6C900C11B1BE7F400CCE060 /* Sources */,
 				D6C900C21B1BE7F400CCE060 /* Frameworks */,
 				D6C900C31B1BE7F400CCE060 /* Resources */,
+				2D9D428B7F013178A1263E9C /* Embed Pods Frameworks */,
+				FD97E2C8590E33076382D1EA /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -215,6 +242,7 @@
 				TargetAttributes = {
 					D6C900C41B1BE7F400CCE060 = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = 8BU8NMY9TY;
 					};
 					D6C900DD1B1BE7F400CCE060 = {
 						CreatedOnToolsVersion = 6.2;
@@ -260,6 +288,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2D9D428B7F013178A1263E9C /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F9E449E4EE2FB41676AA95D7 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FD97E2C8590E33076382D1EA /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D6C900C11B1BE7F400CCE060 /* Sources */ = {
@@ -391,20 +467,26 @@
 		};
 		D6C900E91B1BE7F400CCE060 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A1A56066A33D77E356E90D6 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = TPCPageScrollView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.triplec.aaa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
 		D6C900EA1B1BE7F400CCE060 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 113FB83DF92B3DCC7E883B98 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = TPCPageScrollView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.triplec.aaa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

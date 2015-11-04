@@ -7,6 +7,7 @@
 //
 
 #import "TPCPageScrollView.h"
+#import <SDWebImageManager.h>
 
 #define kPageControlHeight 37
 #define kPageControlEachWidth 16
@@ -129,16 +130,19 @@
     
     if (images.count < 1) return;
     
-    // 设置默认图片
-    self.currentImageView.image = images[0];
-    self.currentImageView.tag = 0;
-    
-    // 小于等于1张就不设置左右图片
-    if (images.count > 1) {
-        self.leftImageView.image = images[images.count - 1];
-        self.rightImageView.image = images[1];
-        self.leftImageView.tag = images.count - 1;
-        self.rightImageView.tag = 1;
+    UIImage *firstImage = _images[0];
+    if (firstImage.size.width && firstImage.size.height && self.currentImageView.image == nil) {
+        // 设置默认图片
+        self.currentImageView.image = images[0];
+        self.currentImageView.tag = 0;
+        
+        // 小于等于1张就不设置左右图片
+        if (images.count > 1) {
+            self.leftImageView.image = images[images.count - 1];
+            self.rightImageView.image = images[1];
+            self.leftImageView.tag = images.count - 1;
+            self.rightImageView.tag = 1;
+        }
     }
     
     //设置页数
@@ -154,8 +158,8 @@
     // 图片过少不能拖动
     self.scrollView.scrollEnabled = !(self.images.count <= 1);
     
-    // 重启定时器
-    if (self.isAutoPaging) {
+    // 下载完成重启定时器
+    if (!self.isTimerRuning) {
         [self startAutoPaging];
     }
 }
@@ -165,39 +169,18 @@
     _imageURLStrings = imageURLStrings;
     
     NSMutableArray *imagesTemp = [NSMutableArray arrayWithCapacity:imageURLStrings.count];
-
-    //设置页数
-    self.pageControl.numberOfPages = imageURLStrings.count;
-    
-    // 设置UIPageControl位置
-    [self setPageControlPostion];
-    
-    // 先下载显示第一张图片
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[imageURLStrings firstObject]]]];
-        [imagesTemp addObject:image];
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            self.currentImageView.image = image;
-            
-            // 设置显示中间的图片
-            CGFloat imageViewW = self.scrollView.bounds.size.width;
-            [self.scrollView setContentOffset:CGPointMake(imageViewW, 0)];
-        });
-        
-        // 再下载剩余图片
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            for (NSInteger i = 1; i < imageURLStrings.count; i++) {
-                UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageURLStrings[i]]]];
-                [imagesTemp addObject:image];
-            }
-            
-            if (!imagesTemp.count) return;
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
+    for (NSInteger i = 0; i < imageURLStrings.count; i++) {
+        [imagesTemp addObject:[[UIImage alloc] init]];
+    }
+    self.images = imagesTemp;
+    for (NSInteger i = 0; i < imageURLStrings.count; i++) {
+        [[SDWebImageManager sharedManager] downloadImageWithURL:imageURLStrings[i] options:SDWebImageRetryFailed progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+            if (image) {
+                imagesTemp[i] = image;
                 self.images = imagesTemp;
-            });
-        });
-    });
+            }
+        }];
+    }
 }
 #pragma mark 布局相关
 - (void)layoutSubviews
@@ -299,6 +282,10 @@
         [self.timer invalidate];
         self.timer = nil;
     }
+}
+
+- (BOOL)isTimerRuning {
+    return self.timer.isValid;
 }
 
 /**
